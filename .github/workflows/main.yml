@@ -1,32 +1,31 @@
-# on:
-#   push:
-#     branches:
-#       - main
-# permissions:
-#   pull-requests: write
-#   contents: write
-#   repository-projects: write
+# on: [push]
 # jobs:
 #   display_files:
-#     name: job name display file content
+#     name: run a sample command
 #     runs-on: ubuntu-latest
-#     steps:
-#       - name: checkout repository
-#         uses: actions/checkout@v2
-        
-#       - name: display file content
+#     steps:        
+#       - name: display output
 #         run: |
-#           cat test.txt
+#           echo "Hello World"
 #         shell: bash
 
 
-on: [push]
+on:
+  push:
+    branches:
+    - master
+permissions:
+  pull-requests: write
+  contents: write
+  repository-projects: write
 jobs:
   display_files:
-    name: run a sample command
+    name: job name display file content
     runs-on: ubuntu-latest
-    steps:        
-      - name: display output
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+      - name: display file content
         run: |
-          echo "Hello World"
+          cat test.txt
         shell: bash
